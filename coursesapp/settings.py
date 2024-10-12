@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-80j^#sy#c0fm8vd&=k@zxdm7xbm6m545s1rb%teqm!^w&em=4k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://render.com/']
+ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com', 'coursesapp.pythonanywhere.com']
 
 
 # Application definition
