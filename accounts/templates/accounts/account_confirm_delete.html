@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8"> 
+    <title>アカウント削除確認</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Courses</h1>
+    <div class="container">
+    <h2>アカウント削除</h2>
+    <p>本当にアカウントを削除しますか？この操作は取り消せません。</p>
+    <div class="button-group">
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn-a">削除する</button>
+        <a href="{% url 'accounts:account_setting' %}">キャンセル</a>
+    </form>
+    </div>
+    </div>
+</body>
+</html>

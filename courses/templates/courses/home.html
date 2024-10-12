@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Courses</h1>
+    <div class="container">
+        <h2>講義一覧</h2>
+        <ul>
+            {% for courses in courses %}
+                <li class="course-item">
+                    <div class="course-content">
+                        <span class="course-title">{{ courses.title }}  全 {{ courses.times }} 回  {{ courses.complete_times }} 回完了</span>
+                        <div class="button-group">
+                            <form action="{% url 'add_times' courses.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">受講済み</button>
+                            </form>
+                            <form action="{% url 'decrease_times' courses.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">取り消し</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+            <h2>メモ</h2>
+            <div class="memo-container">
+            <form method="POST">
+                {% csrf_token %}
+                {{ memo_form.as_p }}
+                <button type="submit" class="btn">保存</button>
+            </form>
+        </div>
+        <a href="{% url 'setting' %}">講義管理</a>
+        <a href="{% url 'accounts:account_setting' %}">アカウント設定</a>
+    </div>
+
+</body>
+</html>

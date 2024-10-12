@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Courses</h1>
+    <div class="container">
+        <h2>講義の追加</h2>
+        <div class="add-form">
+        <form action="{% url 'add_courses' %}" method="POST">
+            {% csrf_token %}
+            {{ new_course.as_p }}
+            <button type="submit" class="btn">追加</button>
+        </form>
+        </div>
+        <h2>登録済み講義</h2>
+        <ul>
+            {% for course in courses %}
+                <li class="course-item">
+                    <div class="course-content">
+                        <span class="course-group">{{course.title}} 全 {{course.times}} 回  {{course.complete_times}} 回完了</span>
+                        <div class="button-group">
+                            <form action="{% url 'delete_courses' course.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">削除</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'home' %}">戻る</a>
+    </div>
+</body>

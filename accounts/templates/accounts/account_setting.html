@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アカウント設定</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Courses</h1>
+    <div class="container">
+    <h2>アカウント設定</h2>
+    <div class="course-item">
+    <a href="{% url 'accounts:password_change' %}">パスワード変更</a>
+    <a href="{% url 'accounts:account_delete' user.id %}">アカウント削除</a>
+    <a href="{% url 'home' %}">戻る</a>
+    </div>
+    </div>
+</body>
+</html>

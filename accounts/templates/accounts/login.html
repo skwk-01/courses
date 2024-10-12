@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Courses</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">ログイン</button>
+    </form>
+    <a href="{% url 'accounts:register' %}">アカウントをお持ちでない方はこちら-新規アカウント作成</a>
+</body>
+
+
+
+
+
